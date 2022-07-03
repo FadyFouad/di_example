@@ -20,4 +20,7 @@ class AppStrings{
   static const String appAuthorYoutube = '';
   static const String appAuthorLinkedIn = '';
 
+  static const String welcome = 'Welcome to Flutter';
+  static const String notFound = '404 Not Found';
+
 }

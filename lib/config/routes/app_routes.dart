@@ -1,3 +1,4 @@
+import 'package:di_example/core/res/app_strings.dart';
 import 'package:di_example/features/random_quote/presentation/pages/quote_screen.dart';
 import 'package:di_example/features/splash/presentation/pages/splash_page.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class AppRoutes{
       case Routes.quotesScreen:
         return MaterialPageRoute(builder: (_) => const QuoteScreen());
       default:
-        return MaterialPageRoute(builder: (_) => const SplashScreen(title: '404 Not Found'));
+        return MaterialPageRoute(builder: (_) => const SplashScreen(title: AppStrings.notFound));
     }
   }
 }

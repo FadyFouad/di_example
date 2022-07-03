@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:di_example/config/routes/app_routes.dart';
+import 'package:di_example/core/res/app_strings.dart';
 import 'package:flutter/material.dart';
 
 /*
@@ -14,7 +15,10 @@ import 'package:flutter/material.dart';
 class SplashScreen extends StatefulWidget {
   final String title;
 
-  const SplashScreen({Key? key, this.title='Welcome to Flutter',}) : super(key: key);
+  const SplashScreen({
+    Key? key,
+    this.title = AppStrings.welcome,
+  }) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
