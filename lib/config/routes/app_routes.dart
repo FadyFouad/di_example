@@ -29,10 +29,11 @@ class AppRoutes{
       case Routes.quotesScreen:
         return MaterialPageRoute(builder: (_) => const QuoteScreen());
       default:
-        return null;
+        return MaterialPageRoute(builder: (_) => const SplashScreen(title: '404 Not Found'));
     }
   }
 }
+
 
 // final routes = {
 //   Routes.init : (context) => const SplashScreen(),

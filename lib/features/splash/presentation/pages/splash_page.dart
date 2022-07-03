@@ -12,7 +12,9 @@ import 'package:flutter/material.dart';
 */
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  final String title;
+
+  const SplashScreen({Key? key, this.title='Welcome to Flutter',}) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -29,9 +31,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text('Welcome to Flutter'),
+        child: Text(widget.title),
       ),
     );
   }
