@@ -14,19 +14,11 @@ ThemeData themeLight = ThemeData(
   scaffoldBackgroundColor: AppColors.background,
   colorScheme: const ColorScheme.light().copyWith(primary: AppColors.primary),
   textTheme: TextTheme(
-    headline1: TextStyles.h1,
-    headline2: TextStyles.h2,
-    headline3: TextStyles.h3,
-    headline4: TextStyles.h4,
-    headline5: TextStyles.h5,
-    headline6: TextStyles.h6,
-    subtitle1: TextStyles.subtitle1,
-    subtitle2: TextStyles.subtitle2,
-    bodyText1: TextStyles.body1,
-    bodyText2: TextStyles.body2,
-    caption: TextStyles.caption,
-    overline: TextStyles.overline,
-    button: TextStyles.button,
+  bodyLarge: TextStyle(
+      fontSize: Dimens.body1,
+      fontWeight: FontWeight.bold,
+      color: AppColors.white
+    ),
   ),
   appBarTheme: const AppBarTheme().copyWith(
     titleTextStyle: TextStyles.body1,

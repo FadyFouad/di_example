@@ -24,13 +24,14 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen> with WidgetsBindingObserver {
   late Timer _timer;
 
   @override
   initState() {
     super.initState();
     _startTimer();
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
@@ -49,12 +50,22 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _goNext() {
-    Navigator.pushNamed(context, Routes.quotesScreen);
+    Navigator.pushReplacementNamed(context, Routes.quotesScreen);
   }
 
   @override
   void dispose() {
-    _timer.cancel();
     super.dispose();
+    _timer.cancel();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    debugPrint('state ${state.name}');
+    if (state == AppLifecycleState.resumed) {
+      _startTimer();
+    }
   }
 }
