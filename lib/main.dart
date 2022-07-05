@@ -3,6 +3,7 @@ import 'package:di_example/config/routes/app_routes.dart';
 import 'package:di_example/core/res/app_strings.dart';
 import 'package:di_example/core/res/styles.dart';
 import 'package:di_example/features/bloc_example/presentation/manager/counter_cubit.dart';
+import 'package:di_example/features/random_quote/presentation/cubit/random_quote_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<CounterCubit>(
           create: (context) => CounterCubit(),
+        ),
+        BlocProvider<RandomQuoteCubit>(
+          create: (context) => RandomQuoteCubit(),
         ),
       ],
       child: MaterialApp(
