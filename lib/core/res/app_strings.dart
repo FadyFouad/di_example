@@ -23,4 +23,10 @@ class AppStrings{
   static const String welcome = 'Welcome to Flutter';
   static const String notFound = '404 Not Found';
 
+  static const String inputNumberHint = 'Input a number';
+  static const String numberEmpty = 'the number is empty';
+  static const String search = 'Search';
+  static const String getRandomTrivia = 'Get random trivia';
+  static const String notFound = '404 Not Found';
+
 }
