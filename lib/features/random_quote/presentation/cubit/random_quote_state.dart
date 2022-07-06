@@ -10,9 +10,9 @@ class RandomQuoteInitial extends RandomQuoteState {
 class RandomQuoteLoading extends RandomQuoteState {}
 class RandomQuoteLoaded extends RandomQuoteState {
   final String quote;
-  RandomQuoteLoaded(this.quote);
+  const RandomQuoteLoaded(this.quote);
 }
 class RandomQuoteError extends RandomQuoteState {
   final String errorMsg;
-  RandomQuoteError(this.errorMsg);
+  const RandomQuoteError(this.errorMsg);
 }

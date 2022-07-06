@@ -28,7 +28,7 @@ class AppRoutes{
       case Routes.init:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.quotesScreen:
-        return MaterialPageRoute(builder: (_) => QuoteScreen());
+        return MaterialPageRoute(builder: (_) => const QuoteScreen());
       default:
         return MaterialPageRoute(builder: (_) => const SplashScreen(title: AppStrings.notFound));
     }

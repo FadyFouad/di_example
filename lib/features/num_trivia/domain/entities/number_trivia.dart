@@ -1,24 +1,26 @@
-import 'package:dartz/dartz.dart';
-import 'package:di_example/features/random_quote/domain/repositories/get_quote.dart';
+import 'package:equatable/equatable.dart';
 
 /*
 ╔═══════════════════════════════════════════════════╗
-║ Created by Fady Fouad on 07/06/2022 at 09:44.     ║
+║ Created by Fady Fouad on 07/06/2022 at 13:59.     ║
 ║═══════════════════════════════════════════════════║
 ║ fady.fouad.a@gmail.com.                           ║
 ╚═══════════════════════════════════════════════════╝
 */
 
-class GetQuoteRepositoryImp implements GetQuoteRepository {
+class NumberTrivia extends Equatable {
+  const NumberTrivia({
+    required this.text,
+    required this.number,
+    this.found,
+    required this.type,});
+
+  final String text;
+  final int number;
+  final bool? found;
+  final String type;
 
   @override
-  Either<int, String> getQuote(bool bool) {
-    if (bool) {
-      return const Left(123);
-    } else {
-      return const Right('Hello World');
-    }
-  }
+  List<Object?> get props => [number, text, found, type];
 
-  GetQuoteRepositoryImp():super();
 }

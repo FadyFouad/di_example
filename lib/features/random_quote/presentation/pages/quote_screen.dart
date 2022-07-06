@@ -1,10 +1,7 @@
 import 'dart:async';
 
-// import 'package:dartz/dartz.dart';
 import 'package:di_example/core/res/app_strings.dart';
-import 'package:di_example/core/res/resources.dart';
 import 'package:di_example/features/random_quote/presentation/cubit/random_quote_cubit.dart';
-// import 'package:di_example/features/random_quote/presentation/cubit/random_quote_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,6 +16,8 @@ import '../widgets/widgets.dart';
 */
 
 class QuoteScreen extends StatefulWidget {
+  const QuoteScreen({Key? key}) : super(key: key);
+
   @override
   State<QuoteScreen> createState() => _QuoteScreenState();
 }
