@@ -29,7 +29,7 @@ class _QuoteScreenState extends State<QuoteScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    context.read<RandomQuoteCubit>().getQuote(true);
+    context.read<RandomQuoteCubit>().getQuote();
   }
 
   @override
@@ -48,9 +48,9 @@ class _QuoteScreenState extends State<QuoteScreen> {
             }  else if (state is RandomQuoteLoaded) {
               body = Center(
                 child: _buildBody(state.quote, () {
-                  context.read<RandomQuoteCubit>().getQuote(false);
+                  context.read<RandomQuoteCubit>().getQuote();
                   Timer(const Duration(seconds: 2), () {
-                    context.read<RandomQuoteCubit>().getQuote(true);
+                    context.read<RandomQuoteCubit>().getQuote();
                   });
                 }
                 ),
@@ -58,9 +58,9 @@ class _QuoteScreenState extends State<QuoteScreen> {
             }else{
               body = Center(
                 child: _buildBody("Error", () {
-                  context.read<RandomQuoteCubit>().getQuote(false);
+                  context.read<RandomQuoteCubit>().getQuote();
                   Timer(const Duration(seconds: 2), () {
-                    context.read<RandomQuoteCubit>().getQuote(false);
+                    context.read<RandomQuoteCubit>().getQuote();
                   });
                 }
                 ),

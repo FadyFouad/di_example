@@ -1,24 +1,24 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:di_example/features/random_quote/data/repositories/get_quote_imp.dart';
+import 'package:di_example/features/random_quote/domain/repositories/get_quote.dart';
 import 'package:meta/meta.dart';
 
 part 'random_quote_state.dart';
 
 class RandomQuoteCubit extends Cubit<RandomQuoteState> {
   RandomQuoteCubit() : super(RandomQuoteInitial());
+  var error = false;
 
-  void getQuote(bool bool) {
+  void getQuote() {
     emit(RandomQuoteLoading());
-    var res = getValue(bool);
-    emit(res.fold(
-        (l) => RandomQuoteError('Error'), (r) => RandomQuoteLoaded('quote')));
-  }
-
-  Either<int, String> getValue(bool bool) {
-    if (bool) {
-      return const Right('Hello');
-    } else {
-      return const Left(123);
-    }
+    GetQuoteRepository quote = GetQuoteRepositoryImp();
+    Timer(const Duration(seconds: 1), () {
+      error = DateTime.fromMicrosecondsSinceEpoch(DateTime.now().microsecond).microsecond % 2 == 0;
+      emit(quote.getQuote(error).fold((l) =>
+          RandomQuoteError('Error'), (r) => RandomQuoteLoaded(r)));
+    });
   }
 }
