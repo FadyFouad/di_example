@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> with WidgetsBindingObserver
   }
 
   _goNext() {
-    Navigator.pushReplacementNamed(context, Routes.numTriviaScreen  );
+    Navigator.pushReplacementNamed(context, Routes.quotesScreen);
   }
 
   @override

@@ -1,6 +1,6 @@
 import 'package:di_example/core/res/app_strings.dart';
 import 'package:di_example/features/num_trivia/presentation/pages/number_trivia_page.dart';
-import 'package:di_example/features/random_quote/presentation/pages/quote_screen.dart';
+import 'package:di_example/features/quote/presentation/pages/quote_screen.dart';
 import 'package:di_example/features/splash/presentation/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 

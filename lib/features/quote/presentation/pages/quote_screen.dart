@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:di_example/core/res/app_strings.dart';
-import 'package:di_example/features/random_quote/presentation/cubit/random_quote_cubit.dart';
+import 'package:di_example/features/quote/presentation/cubit/quote_cubit.dart';
+
+// import 'package:di_example/features/random_quote/presentation/cubit/random_quote_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,11 +26,11 @@ class QuoteScreen extends StatefulWidget {
 
 class _QuoteScreenState extends State<QuoteScreen> {
   Widget body = const SizedBox();
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    context.read<RandomQuoteCubit>().getQuote();
+    context.read<QuoteCubit>().getQuote();
   }
 
   @override
@@ -37,37 +39,45 @@ class _QuoteScreenState extends State<QuoteScreen> {
         appBar: AppBar(
           title: const Text(AppStrings.appName),
         ),
-        body: BlocConsumer<RandomQuoteCubit, RandomQuoteState>(
+        body: /*Center(
+              child: _buildBody('state.quote', () {
+                // context.read<RandomQuoteCubit>().getQuote();
+                // Timer(const Duration(seconds: 2), () {
+                //   context.read<RandomQuoteCubit>().getQuote();
+                // });
+              }
+              ),*/
+
+            BlocConsumer<QuoteCubit, QuoteState>(
           listener: (context, state) {
             // TODO: implement listener
           },
           builder: (context, state) {
-            if (state is RandomQuoteLoading) {
+            if (state is QuoteLoading) {
               body = const Center(child: CircularProgressIndicator());
-            }  else if (state is RandomQuoteLoaded) {
+            } else if (state is QuoteLoaded) {
               body = Center(
-                child: _buildBody(state.quote, () {
-                  context.read<RandomQuoteCubit>().getQuote();
+                child: _buildBody(state.quote.text, () {
+                  context.read<QuoteCubit>().getQuote();
                   Timer(const Duration(seconds: 2), () {
-                    context.read<RandomQuoteCubit>().getQuote();
+                    context.read<QuoteCubit>().getQuote();
                   });
-                }
-                ),
+                }),
               );
-            }else{
+            } else {
               body = Center(
                 child: _buildBody("Error", () {
-                  context.read<RandomQuoteCubit>().getQuote();
+                  context.read<QuoteCubit>().getQuote();
                   Timer(const Duration(seconds: 2), () {
-                    context.read<RandomQuoteCubit>().getQuote();
+                    context.read<QuoteCubit>().getQuote();
                   });
-                }
-                ),
+                }),
               );
             }
             return body;
           },
         ));
+    // ));
   }
 
   Column _buildBody(String quote, onTap) {
@@ -79,4 +89,3 @@ class _QuoteScreenState extends State<QuoteScreen> {
     );
   }
 }
-

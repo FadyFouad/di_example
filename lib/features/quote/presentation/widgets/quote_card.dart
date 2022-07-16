@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 
 class QuoteCard extends StatelessWidget {
   final String quote;
+
   const QuoteCard({Key? key, required this.quote}) : super(key: key);
 
   @override
@@ -18,7 +19,7 @@ class QuoteCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.all(16),
-      constraints: const BoxConstraints(minHeight: 300,minWidth: 300),
+      constraints: const BoxConstraints(minHeight: 300, minWidth: 300),
       decoration: BoxDecoration(
         border: Border.all(
           width: 2,
@@ -26,7 +27,11 @@ class QuoteCard extends StatelessWidget {
         color: AppColors.primary,
         borderRadius: BorderRadius.circular(30),
       ),
-      child: Text(quote,style: Theme.of(context).textTheme.bodyLarge,textAlign: TextAlign.center,),
+      child: Text(
+        quote,
+        style: Theme.of(context).textTheme.bodyLarge,
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }

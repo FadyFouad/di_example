@@ -8,4 +8,3 @@ export 'reload_button.dart';
 ║ fady.fouad.a@gmail.com.                           ║
 ╚═══════════════════════════════════════════════════╝
 */
-

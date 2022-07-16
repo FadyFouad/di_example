@@ -4,14 +4,8 @@ import 'package:di_example/core/res/app_strings.dart';
 import 'package:di_example/core/res/styles.dart';
 import 'package:di_example/di.dart';
 import 'package:di_example/features/bloc_example/presentation/manager/counter_cubit.dart';
-import 'package:di_example/features/num_trivia/data/data_sources/number_trivia_local.dart';
-import 'package:di_example/features/num_trivia/data/data_sources/number_trivia_remote.dart';
-import 'package:di_example/features/num_trivia/data/repositories/number_trivia_repository_imp.dart';
-import 'package:di_example/features/num_trivia/domain/usecases/get_concrete_num_trivia.dart';
-import 'package:di_example/features/num_trivia/domain/usecases/get_random_num_trivia.dart';
-import 'package:di_example/features/num_trivia/presentation/bloc/number_trivia_bloc.dart';
 import 'package:di_example/features/num_trivia/presentation/cubit/number_trivia_cubit.dart';
-import 'package:di_example/features/random_quote/presentation/cubit/random_quote_cubit.dart';
+import 'package:di_example/features/quote/presentation/cubit/quote_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,15 +31,14 @@ class MyApp extends StatelessWidget {
         BlocProvider<CounterCubit>(
           create: (context) => CounterCubit(),
         ),
-        BlocProvider<RandomQuoteCubit>(
-          create: (context) => RandomQuoteCubit(),
+        BlocProvider<QuoteCubit>(
+          create: (context) => QuoteCubit(quote: sl()),
         ),
         BlocProvider<NumberTriviaCubit>(
-          create: (context) =>
-              NumberTriviaCubit(
-              getTriviaConcreteNumber:  sl(),
-              getTriviaRandomNumber:  sl(),
-              )),
+            create: (context) => NumberTriviaCubit(
+                  getTriviaConcreteNumber: sl(),
+                  getTriviaRandomNumber: sl(),
+                )),
       ],
       child: MaterialApp(
         title: AppStrings.appName,
