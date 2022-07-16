@@ -1,26 +1,15 @@
-import 'package:equatable/equatable.dart';
+import 'package:dartz/dartz.dart';
+import 'package:di_example/core/error/failure.dart';
+import 'package:flutter/material.dart';
 
 /*
 ╔═══════════════════════════════════════════════════╗
-║ Created by Fady Fouad on 07/06/2022 at 13:59.     ║
+║ Created by Fady Fouad on 07/07/2022 at 13:19.     ║
 ║═══════════════════════════════════════════════════║
 ║ fady.fouad.a@gmail.com.                           ║
 ╚═══════════════════════════════════════════════════╝
 */
 
-class NumberTrivia extends Equatable {
-  const NumberTrivia({
-    this.text,
-    this.number,
-    this.found,
-    this.type,});
-
-  final String? text;
-  final int? number;
-  final bool? found;
-  final String? type;
-
-  @override
-  List<Object?> get props => [number, text, found, type];
-
+abstract class UseCase<Type, Params> {
+  Future<Either<Failure, Type>> call(Params params);
 }

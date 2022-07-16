@@ -27,6 +27,5 @@ class AppStrings{
   static const String numberEmpty = 'the number is empty';
   static const String search = 'Search';
   static const String getRandomTrivia = 'Get random trivia';
-  static const String notFound = '404 Not Found';
 
 }

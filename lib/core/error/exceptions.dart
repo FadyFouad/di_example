@@ -1,26 +1,17 @@
-import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 /*
 ╔═══════════════════════════════════════════════════╗
-║ Created by Fady Fouad on 07/06/2022 at 13:59.     ║
+║ Created by Fady Fouad on 07/09/2022 at 15:21.     ║
 ║═══════════════════════════════════════════════════║
 ║ fady.fouad.a@gmail.com.                           ║
 ╚═══════════════════════════════════════════════════╝
 */
 
-class NumberTrivia extends Equatable {
-  const NumberTrivia({
-    this.text,
-    this.number,
-    this.found,
-    this.type,});
+class ServerException implements Exception {
+  const ServerException();
+}
 
-  final String? text;
-  final int? number;
-  final bool? found;
-  final String? type;
-
-  @override
-  List<Object?> get props => [number, text, found, type];
-
+class CacheException implements Exception {
+  const CacheException();
 }

@@ -1,5 +1,10 @@
+import 'package:di_example/core/network/network_info.dart';
 import 'package:di_example/core/res/app_strings.dart';
+import 'package:di_example/di.dart';
+import 'package:di_example/features/num_trivia/presentation/cubit/number_trivia_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class TriviaControls extends StatefulWidget {
   const TriviaControls({
@@ -76,6 +81,10 @@ class TriviaControlsState extends State<TriviaControls> {
     // Clearing the TextField to prepare it for the next inputted number
     if(_formKey.currentState!.validate()){
       controller.clear();
+      // var connected = await NetworkInfoImpl(sl()).isConnected;
+      // if(connected){
+        BlocProvider.of<NumberTriviaCubit>(context).getConcreteNumberTrivia(int.parse(inputStr!));
+      // }
       // BlocProvider.of<NumberTriviaBloc>(context)
       //     .add(GetTriviaForConcreteNumber(inputStr));
     }
@@ -83,6 +92,6 @@ class TriviaControlsState extends State<TriviaControls> {
 
   void dispatchRandom() {
     controller.clear();
-    // BlocProvider.of<NumberTriviaBloc>(context).add(GetTriviaForRandomNumber());
+    BlocProvider.of<NumberTriviaCubit>(context).getTriviaForRandomNumber();
   }
 }

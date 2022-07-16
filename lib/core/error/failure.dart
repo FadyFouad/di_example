@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 /*
 ╔═══════════════════════════════════════════════════╗
@@ -12,4 +11,28 @@ import 'package:flutter/material.dart';
 abstract class Failure extends Equatable {
   String get message;
   const Failure([List properties = const <dynamic>[]]);
+}
+
+class ServerFailure extends Failure {
+  const ServerFailure(String message);
+
+  @override
+  // TODO: implement message
+  String get message => throw UnimplementedError();
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => throw UnimplementedError();
+}
+
+class CacheFailure extends Failure {
+  const CacheFailure(String message);
+
+  @override
+  // TODO: implement message
+  String get message => throw UnimplementedError();
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => throw UnimplementedError();
 }

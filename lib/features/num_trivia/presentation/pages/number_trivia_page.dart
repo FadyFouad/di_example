@@ -1,6 +1,7 @@
+import 'package:di_example/features/num_trivia/presentation/cubit/number_trivia_cubit.dart';
 import 'package:di_example/features/num_trivia/presentation/widgets/trivial_control.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NumberTriviaPage extends StatelessWidget {
   @override
@@ -9,28 +10,42 @@ class NumberTriviaPage extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Number Trivia"),
         ),
-        body: buildBody(context)
-    );
+        body: buildBody(context));
   }
 
   buildBody(BuildContext context) {
     return Center(
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: const[
-              SizedBox(height: 10),
-              // Top half
-              MessageDisplay(
-                      message: 'state.message',
-              ),
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          children: [
+            const SizedBox(height: 10),
+            // Top half
+            BlocBuilder<NumberTriviaCubit, NumberTriviaState>(
+              builder: (context, NumberTriviaState state) {
+                if (state is NumberTriviaLoaded) {
+                  return MessageDisplay(message: '${state.trivia.text}');
+                } else if (state is NumberTriviaLoading) {
+                  return SizedBox(
+                      height: MediaQuery.of(context).size.height / 3,
+                      child: const Center(
+                          child: CircularProgressIndicator(
+                        color: Colors.red,
+                      )));
+                } else if (state is NumberTriviaError) {
+                  return MessageDisplay(message: 'Error : ${state.message}');
+                } else {
+                  return MessageDisplay(message: 'Search for num');
+                }
+              },
+            ),
 
-              SizedBox(height: 20),
-              // Bottom half
-              TriviaControls()  ,
-            ],
-          ),
+            const SizedBox(height: 20),
+            // Bottom half
+            const TriviaControls(),
+          ],
         ),
+      ),
     );
   }
 }

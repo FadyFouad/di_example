@@ -1,26 +1,20 @@
-import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 /*
 ╔═══════════════════════════════════════════════════╗
-║ Created by Fady Fouad on 07/06/2022 at 13:59.     ║
+║ Created by Fady Fouad on 07/09/2022 at 15:18.     ║
 ║═══════════════════════════════════════════════════║
 ║ fady.fouad.a@gmail.com.                           ║
 ╚═══════════════════════════════════════════════════╝
 */
+abstract class NetworkInfo {
+  Future<bool> get isConnected;
+}
 
-class NumberTrivia extends Equatable {
-  const NumberTrivia({
-    this.text,
-    this.number,
-    this.found,
-    this.type,});
-
-  final String? text;
-  final int? number;
-  final bool? found;
-  final String? type;
-
+class NetworkInfoImpl implements NetworkInfo {
+  final InternetConnectionChecker _connectivity;
+  NetworkInfoImpl(this._connectivity);
   @override
-  List<Object?> get props => [number, text, found, type];
-
+  Future<bool> get isConnected => _connectivity.hasConnection;
 }
